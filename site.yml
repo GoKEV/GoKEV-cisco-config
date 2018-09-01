@@ -1,0 +1,8 @@
+---
+- name: Config with cisco
+  hosts: all
+  gather_facts: no
+
+
+  roles:
+  - cisco-config
