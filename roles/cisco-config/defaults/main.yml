@@ -1,0 +1,180 @@
+---
+# defaults file for GoKEV-cisco-config/
+vlans:
+  - vlan_id: 1
+    vlan_name: LAN
+  - vlan_id: 10
+    vlan_name: KPLH
+  - vlan_id: 20
+    vlan_name: KEV
+  - vlan_id: 30
+    vlan_name: OPS
+  - vlan_id: 105
+    vlan_name: CAM
+  - vlan_id: 110
+    vlan_name: LAB
+
+access_ports:
+#			 Ports 1-10 LAN VLAN1
+  - switch_if_no: 1
+    switch_if_vlan: 1
+  - switch_if_no: 2
+    switch_if_vlan: 1
+  - switch_if_no: 3
+    switch_if_vlan: 1
+  - switch_if_no: 4
+    switch_if_vlan: 1
+  - switch_if_no: 5
+    switch_if_vlan: 1
+  - switch_if_no: 6
+    switch_if_vlan: 1
+  - switch_if_no: 7
+    switch_if_vlan: 1
+  - switch_if_no: 8
+    switch_if_vlan: 1
+  - switch_if_no: 9
+    switch_if_vlan: 1
+  - switch_if_no: 10
+    switch_if_vlan: 1
+	
+#			 Ports 11-12 KPLH (VLAN 10)
+  - switch_if_no: 11
+    switch_if_vlan: 10
+  - switch_if_no: 12
+    switch_if_vlan: 10
+
+#			 Ports 13-22 KEV (VLAN 20)
+  - switch_if_no: 13
+    switch_if_vlan: 20
+  - switch_if_no: 14
+    switch_if_vlan: 20
+  - switch_if_no: 15
+    switch_if_vlan: 20
+  - switch_if_no: 16
+    switch_if_vlan: 20
+  - switch_if_no: 17
+    switch_if_vlan: 20
+  - switch_if_no: 18
+    switch_if_vlan: 20
+  - switch_if_no: 19
+    switch_if_vlan: 20
+  - switch_if_no: 20
+    switch_if_vlan: 20
+  - switch_if_no: 21
+    switch_if_vlan: 20
+  - switch_if_no: 22
+    switch_if_vlan: 20
+
+#			 Ports 23-24 WiFI (VLAN 1, tagged 10,20,30)
+  - switch_if_no: 23
+    switch_if_vlan: 1
+  - switch_if_no: 24
+    switch_if_vlan: 1
+
+#			 Ports 25-34 CAM (VLAN 105)
+  - switch_if_no: 25
+    switch_if_vlan: 105
+  - switch_if_no: 26
+    switch_if_vlan: 105
+  - switch_if_no: 27
+    switch_if_vlan: 105
+  - switch_if_no: 28
+    switch_if_vlan: 105
+  - switch_if_no: 29
+    switch_if_vlan: 105
+  - switch_if_no: 30
+    switch_if_vlan: 105
+  - switch_if_no: 31
+    switch_if_vlan: 105
+  - switch_if_no: 32
+    switch_if_vlan: 105
+  - switch_if_no: 33
+    switch_if_vlan: 105
+  - switch_if_no: 34
+    switch_if_vlan: 105
+
+#			 Ports 35-36 LAB (VLAN 110)
+  - switch_if_no: 35
+    switch_if_vlan: 110
+  - switch_if_no: 36
+    switch_if_vlan: 110
+
+#			 Ports 37-52 OPS (VLAN 30 native, tagged with 1,10,20,30,105,110)
+  - switch_if_no: 37
+    switch_if_vlan: 30
+  - switch_if_no: 38
+    switch_if_vlan: 30
+  - switch_if_no: 39
+    switch_if_vlan: 30
+  - switch_if_no: 40
+    switch_if_vlan: 30
+  - switch_if_no: 41
+    switch_if_vlan: 30
+  - switch_if_no: 42
+    switch_if_vlan: 30
+  - switch_if_no: 43
+    switch_if_vlan: 30
+  - switch_if_no: 44
+    switch_if_vlan: 30
+  - switch_if_no: 45
+    switch_if_vlan: 30
+  - switch_if_no: 46
+    switch_if_vlan: 30
+  - switch_if_no: 47
+    switch_if_vlan: 30
+  - switch_if_no: 48
+    switch_if_vlan: 30
+  - switch_if_no: 49
+    switch_if_vlan: 30
+  - switch_if_no: 50
+    switch_if_vlan: 30
+  - switch_if_no: 51
+    switch_if_vlan: 30
+  - switch_if_no: 52
+    switch_if_vlan: 30
+
+
+
+
+trunk_ports:
+
+#			 Ports 23-24 WiFI (VLAN 1, tagged 10,20,30)
+  - trunk_if_no: 23
+    trunk_if_vlans: '10,20,30'
+  - trunk_if_no: 24
+    trunk_if_vlans: '10,20,30'
+
+# 			Ports 37-52 OPS (VLAN 30 native, tagged with 1,10,20,30,105,110)
+  - trunk_if_no: 37
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 38
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 39
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 40
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 41
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 42
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 43
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 44
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 45
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 46
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 47
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 48
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 49
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 50
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 51
+    trunk_if_vlans: '1,10,20,30,105,110'
+  - trunk_if_no: 52
+    trunk_if_vlans: '1,10,20,30,105,110'
+
