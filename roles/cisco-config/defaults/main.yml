@@ -36,7 +36,7 @@ access_ports:
     switch_if_vlan: 1
   - switch_if_no: 10
     switch_if_vlan: 1
-	
+
 #			 Ports 11-12 KPLH (VLAN 10)
   - switch_if_no: 11
     switch_if_vlan: 10
@@ -132,9 +132,6 @@ access_ports:
     switch_if_vlan: 30
   - switch_if_no: 52
     switch_if_vlan: 30
-
-
-
 
 trunk_ports:
 
