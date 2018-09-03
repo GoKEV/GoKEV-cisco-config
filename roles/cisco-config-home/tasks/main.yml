@@ -45,6 +45,6 @@
   debug:
     var: show_vlan.stdout_lines
 
-- name: Save the config
+- name: save running to startup when modified
   ios_config:
-   save: yes
+    save_when: modified
