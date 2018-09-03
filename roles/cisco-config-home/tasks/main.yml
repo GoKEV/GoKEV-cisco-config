@@ -1,2 +1,45 @@
 ---
-# tasks file for cisco-config-home
+- name: Provision VLAN
+  ios_vlan:
+    vlan_id: "{{ item.vlan_id }}"
+    name: "{{ item.vlan_name }}"
+    state: present
+  with_items: "{{ vlans }}"
+
+- name: set Interface descriptions
+  ios_interface:
+    name: "{{ item.interface }}"
+    description: "{{ item.description }}"
+  with_items:
+    - "{{ access_ports }}"
+    - "{{ trunk_ports }}"
+
+- name: Setup Access Ports
+  ios_l2_interface:
+    name: "{{ item.interface }}"
+    mode: access
+    access_vlan: "{{ item.vlan }}"
+  with_items: "{{ access_ports }}"
+
+- name: Enable trunk encapsulation dot1q for trunk Ports
+  ios_config:
+    lines:
+      - switchport trunk encapsulation dot1q
+    parents: "interface {{ item.interface }}"
+  with_items: "{{ trunk_ports }}"
+
+- name: Setup Trunked Ports
+  ios_l2_interface:
+    name: "{{ item.interface }}"
+    mode: trunk
+    trunk_allowed_vlans: "{{ item.vlans_allowed }}"
+    native_vlan: "{{ item.native_vlan }}"
+  with_items: "{{ trunk_ports }}"
+
+- name: Show VLANs
+  ios_command:
+    commands: show vlan brief
+  register: show_vlan
+
+- debug:
+    var: show_vlan.stdout_lines
