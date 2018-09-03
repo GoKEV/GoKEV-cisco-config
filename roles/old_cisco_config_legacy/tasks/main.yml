@@ -1,0 +1,28 @@
+---
+# tasks file for GoKEV-cisco-config/
+- name: Provision VLAN
+  ios_vlan:
+    vlan_id: "{{ item.vlan_id }}"
+    name: "{{ item.vlan_name }}"
+    state: present
+  with_items: "{{ vlans }}"
+- name: Setup Access Ports
+  ios_l2_interface:
+    name: "Gi0/{{ item.switch_if_no }}"
+    mode: access
+    access_vlan: "{{ item.switch_if_vlan }}"
+  with_items: "{{ access_ports }}"
+- name: Setup Trunk Ports
+  ios_l2_interface:
+    name: "Gi0/{{ item.trunk_if_no }}"
+    mode: trunk
+    trunk_allowed_vlans: "{{ item.trunk_if_vlans }}"
+  with_items: "{{ trunk_ports }}"
+- name: Show VLANs
+  ios_command:
+    commands: show vlan brief
+  register: show_vlan
+- debug:
+    var: show_vlan.stdout_lines
+
+
