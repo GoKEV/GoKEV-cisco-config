@@ -41,5 +41,10 @@
     commands: show vlan brief
   register: show_vlan
 
-- debug:
+- name: Spit out some debug showing the new settings.
+  debug:
     var: show_vlan.stdout_lines
+
+- name: Save the config
+  ios_config:
+   save: yes
