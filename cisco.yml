@@ -1,9 +1,0 @@
----
-- name: Config with cisco
-  hosts: all
-  gather_facts: no
-  connection: local
-
-  roles:
-  - cisco-config-home
-

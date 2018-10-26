@@ -1,6 +1,0 @@
-[cisco]
-cisco01 ansible_host=10.0.0.231
-cisco02 ansible_host=10.0.0.232
-cisco03 ansible_host=10.0.0.233
-cisco04 ansible_host=10.0.0.234
-cisco05 ansible_host=10.0.0.235
